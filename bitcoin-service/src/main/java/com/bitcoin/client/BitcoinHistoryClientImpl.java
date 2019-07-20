@@ -3,7 +3,10 @@ package com.bitcoin.client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import com.bitcoin.execption.BitcoinServiceCustomExecption;
 import com.bitcoin.model.BitcoinHistoryResponse;
+import com.bitcoin.util.CommonConstants;
 
 @Component
 public class BitcoinHistoryClientImpl implements BitcoinHistoryClient {
@@ -20,9 +23,8 @@ public class BitcoinHistoryClientImpl implements BitcoinHistoryClient {
 			bitcoinHistoryResp = restTemplate.getForObject(uri, BitcoinHistoryResponse.class);
 			System.out.println("bitcoinHistoryResp: " + bitcoinHistoryResp);
 		} catch (Exception e) {
-			System.out.println("Unable to connect to bitcoin history service: " + e.getStackTrace());
+			throw new BitcoinServiceCustomExecption(CommonConstants.MESSAGE);
 		}
 		return bitcoinHistoryResp;
 	}
-
 }

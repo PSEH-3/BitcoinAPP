@@ -1,18 +1,17 @@
 package com.bitcoin.model;
 
-import java.util.Date;
-
 public class BitcoinServiceResponse {
-	private Date historicDate;
+	private String historicDate;
 	private String price;
 	private String currency;
-	public Date getHistoricDate() {
+
+	
+	public String getHistoricDate() {
 		return historicDate;
 	}
-	public void setHistoricDate(Date historicDate) {
+	public void setHistoricDate(String historicDate) {
 		this.historicDate = historicDate;
 	}
-	
 	public String getPrice() {
 		return price;
 	}

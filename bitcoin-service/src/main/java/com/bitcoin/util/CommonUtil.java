@@ -35,7 +35,7 @@ public class CommonUtil {
 				key = entry.getKey();
 			}
 		}
-		bitcoinServiceResp.setHistoricDate(key);
+		bitcoinServiceResp.setHistoricDate(CommonUtil.formateDate(key));
 		bitcoinServiceResp.setPrice(maxPriceValue.toString()+CommonConstants.HIGHEST);
 		bitcoinServiceResp.setCurrency(CommonConstants.CURRENCY);
 		return bitcoinServiceResp;

@@ -1,22 +1,25 @@
 package com.bitcoin.model;
 
-import java.util.Date;
-
 public class Time {
-	private Date updated;
-	private Date updatedISO;
-	public Date getUpdated() {
+	private String updated;
+	private String updatedISO;
+	
+	public String getUpdated() {
 		return updated;
 	}
-	public void setUpdated(Date updated) {
+
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	public Date getUpdatedISO() {
+
+	public String getUpdatedISO() {
 		return updatedISO;
 	}
-	public void setUpdatedISO(Date updatedISO) {
+
+	public void setUpdatedISO(String updatedISO) {
 		this.updatedISO = updatedISO;
 	}
+
 	@Override
 	public String toString() {
 		return "Time [updated=" + updated + ", updatedISO=" + updatedISO + "]";
