@@ -6,19 +6,23 @@ import org.springframework.web.client.RestTemplate;
 import com.bitcoin.model.BitcoinHistoryResponse;
 
 @Component
-public class BitcoinHistoryClientImpl implements BitcoinHistoryClient{
-	
+public class BitcoinHistoryClientImpl implements BitcoinHistoryClient {
+
 	@Autowired
 	RestTemplate restTemplate;
 
 	@Override
 	public BitcoinHistoryResponse getBitcoinHistoryData() {
-		
-		final String uri = "https://api.coindesk.com/v1/bpi/historical/close.json";
-	     	    
-		BitcoinHistoryResponse bitcoinHistoryResp = restTemplate.getForObject(uri, BitcoinHistoryResponse.class);	     
-	    System.out.println("bitcoinHistoryResp: "+bitcoinHistoryResp);	    
-	    return bitcoinHistoryResp;
+		BitcoinHistoryResponse bitcoinHistoryResp = new BitcoinHistoryResponse();
+
+		try {
+			final String uri = "https://api.coindesk.com/v1/bpi/historical/close.json";
+			bitcoinHistoryResp = restTemplate.getForObject(uri, BitcoinHistoryResponse.class);
+			System.out.println("bitcoinHistoryResp: " + bitcoinHistoryResp);
+		} catch (Exception e) {
+			System.out.println("Unable to connect to bitcoin history service: " + e.getStackTrace());
+		}
+		return bitcoinHistoryResp;
 	}
-	
+
 }
