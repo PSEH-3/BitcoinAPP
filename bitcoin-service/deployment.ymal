@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitcoinservice
+  labels:
+    app: bitcoin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bitcoin
+  template:
+    metadata:
+      labels:
+        app: bitcoin
+    spec:
+      containers:
+      - name: spring-backend
+        image: gcr.io/gke/ecomm/bitcoinservice:v1
+        ports:
+        - containerPort: 80
